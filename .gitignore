@@ -1,0 +1,5 @@
+.env
+postgres_data
+host_static_volume
+frontend/static
+.DS_Store

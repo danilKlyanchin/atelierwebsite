@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ателье Мастер</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* .font-manrope {
+      font-family: 'Manrope', sans-serif;
+    } */
+  </style>
+  
+</head>
+<body class="bg-white text-black font-manrope">
+<!-- Открывающий блок -->
+<section class="relative bg-blue-400 w-full flex flex-col justify-start items-center text-center px-6"
+         style="height: 50vh; padding-top: calc(100vh / 6);">
+  <div class="z-10">
+    <h1 class="text-6xl md:text-7xl font-extrabold text-white drop-shadow-lg mb-4">
+      Мастер
+    </h1>
+    <p class="text-xl md:text-2xl font-semibold text-white drop-shadow-md text-yellow-400">
+      Ателье и пункт приёма химчистки
+    </p>
+  </div>
+</section>
+
+<!-- Скролл-шапка (изначально скрыта) -->
+<header id="stickyHeader"
+  class="w-full h-16 py-4 px-6 flex justify-between items-center shadow-md bg-blue-400 fixed top-0 left-0 z-50 transition-all duration-500 opacity-0 pointer-events-none">
+  
+  <div class="flex items-center space-x-4">
+    <img src="{% static 'logo.png' %}" alt="Логотип" class="h-14 w-auto">
+    <div>
+      <h1 class="text-xl font-extrabold text-white">МАСТЕР</h1>
+      <p class="text-sm text-white tracking-wide">АТЕЛЬЕ И ХИМЧИСТКА</p>
+    </div>
+  </div>
+
+  <div class="text-black space-x-3 px-4 py-2 text-sm text-center flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+    <div class="text-left">
+      <p class="text-sm font-semibold leading-tight text-white">Работаем каждый день</p>
+      <p class="text-sm font-semibold text-white">10:00 – 19:00</p>
+    </div>
+  </div>
+</header>
+
+
+ <!-- О НАС -->
+ <section class="px-6 py-16">
+  <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-600 tracking-wide mb-14 relative">
+    О НАС
+    <span class="block w-3/12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+  </h2>
+
+  <!-- Блок 1 -->
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-16" data-aos="fade-right">
+    <img src="{% static 'main_1_gpt.png' %}" alt="Ателье"
+         class="rounded-3xl w-full md:w-1/2 max-h-[400px] object-cover">
+    <div class="text-center md:text-left md:w-1/2">
+      <h3 class="text-4xl md:text-5xl font-bold text-blue-600 drop-shadow-md leading-tight">
+        Ателье, где важны<br><span class="text-yellow-400">детали</span> и чувства
+      </h3>
+    </div>
+  </div>
+
+  <!-- Блок 2 -->
+  <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10 mb-16" data-aos="fade-left">
+    <div class="text-center md:text-left md:w-1/2">
+      <h3 class="text-4xl md:text-5xl font-bold text-blue-600 drop-shadow-md leading-tight">
+        Подгоним под фигуру<br>и <span class="text-yellow-400">под настроение</span>
+      </h3>
+    </div>
+    <img src="{% static 'main_2_gpt.png' %}" alt="Процесс"
+         class="rounded-3xl w-full md:w-1/2 max-h-[400px] object-cover">
+  </div>
+
+  <!-- Блок 3 -->
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10" data-aos="fade-up">
+    <img src="{% static 'main_3_gpt.png' %}" alt="Примеры"
+         class="rounded-3xl w-full md:w-1/2 max-h-[400px] object-cover">
+    <div class="text-center md:text-left md:w-1/2">
+      <h3 class="text-4xl md:text-5xl font-bold text-blue-600 drop-shadow-md leading-tight">
+        Ваш стиль – <span class="text-yellow-400">наша забота</span>
+      </h3>
+    </div>
+  </div>
+</section>
+
+  <!-- Каталог Услуг -->
+  <section class="p-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-600 tracking-wide mb-14 relative">
+      УСЛУГИ
+      <span class="block w-3/12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+    </h2>
+    <div id="services" class="flex flex-wrap justify-center gap-6"></div>
+  </section>
+  
+  <!-- Каталог фурнитура -->  
+  <section class="p-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-600 tracking-wide mb-14 relative">
+      ФУРНИТУРА
+      <span class="block w-3/12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+    </h2>
+    <div id="products" class="flex flex-wrap justify-center gap-6"></div>
+  </section>
+
+  <!-- Стоимость услуг -->  
+  <section x-data="priceTable()" x-init="loadData()" class="px-4 py-10">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-600 tracking-wide mb-10 relative">
+      Стоимость услуг
+      <span class="block w-3/12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+    </h2>
+  
+    <div class="overflow-x-auto">
+      <table class="mx-auto w-full max-w-4xl table-auto border-collapse border border-gray-300 shadow-lg">
+        <thead class="bg-blue-100">
+          <tr>
+            <th class="border border-gray-300 px-4 py-2 text-left">Наименование</th>
+            <th class="border border-gray-300 px-4 py-2 text-center">от (руб.)</th>
+            <th class="border border-gray-300 px-4 py-2 text-center">до (руб.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="(row, index) in rows" :key="index">
+            <tr :class="row[3] === '1' ? 'bg-gray-100 font-bold' : 'hover:bg-gray-50'">
+              <td class="border border-gray-300 px-4 py-2" x-text="row[0]" :colspan="row[3] === '1' ? 3 : 1"></td>
+              <template x-if="row[3] !== '1'">
+                <td class="border border-gray-300 px-4 py-2 text-center" x-text="row[1]"></td>
+              </template>
+              <template x-if="row[3] !== '1'">
+                <td class="border border-gray-300 px-4 py-2 text-center" x-text="row[2]"></td>
+              </template>
+            </tr>
+          </template>
+          
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script>
+    function priceTable() {
+      return {
+        rows: [],
+        async loadData() {
+          const res = await fetch('/static/serialized.csv');
+          const text = await res.text();
+          const lines = text.trim().replace(/\r\n/g, '\n').split('\n').slice(1); // skip header
+          this.rows = lines.map(line => line.split(';'));
+          console.log(this.rows)
+        }
+      }
+    }
+  </script>
+  
+  <!-- Контакты -->
+<section class="p-6 bg-gray-100 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-600 tracking-wide mb-14 relative">
+      КОНТАКТЫ
+      <span class="block w-3/12 h-1 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+    </h2>
+    <div class="space-y-4 text-left text-lg">
+      <p>📍 г. Тюмень, ул. Щербакова, 112/2</p>
+      <p>📞 +7 (3452) 38-56-86</p>
+      <p>🕒 Режим работы: 10:00–19:00 (каждый день)</p>
+
+      <!-- Новая строка с почтой и мессенджерами -->
+      <div class="flex items-center space-x-6">
+        <!-- Почта -->
+        <div class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-black rounded-xl" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <a href="mailto:9821952922@mail.ru" class="hover:underline">9821952922@mail.ru</a>
+        </div>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/+79829485686" target="_blank">
+          <img src="{% static 'whatsapp.png' %}" class="h-12 w-12 rounded-xl" alt="WhatsApp">
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/+79829485686" target="_blank">
+          <img src="{% static 'telegram.png' %}" class="h-12 w-12" alt="Telegram">
+        </a>
+      </div>
+    </div>
+
+    <!-- Карты -->
+    <div class="flex justify-center space-x-20 items-center text-center mt-6">
+      <!-- 2ГИС -->
+      <div class="flex flex-col items-center">
+        <a href="https://go.2gis.com/67rtD" target="_blank">
+          <img src="{% static '2gis.png' %}" alt="Открыть в 2ГИС" class="h-20 w-auto object-contain">
+        </a>
+      </div>
+    
+      <!-- Яндекс -->
+      <div class="flex flex-col items-center">
+        <a href="https://yandex.ru/maps/-/CHfFzR7C" target="_blank">
+          <img src="{% static 'yandexmap.png' %}" alt="Открыть в Яндекс картах" class="h-20 w-auto object-contain">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Яндекс карта -->
+  <div class="mt-4">
+    <script type="text/javascript" charset="utf-8" async
+      src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A54f7c4b5546d8fd782d283d9cfa51377e6561b0745680fb76b8e3834e3447cee&amp;width=100%25&amp;height=423&amp;lang=ru_RU&amp;scroll=true">
+    </script>
+  </div>
+</section>
+
+
+  <!-- Футер -->
+  <footer class="bg-blue-400 text-white text-center py-4">
+    <p>© 2025 Ателье "Мастер"</p>
+  </footer>
+
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out-quad'
+    });
+  </script>  
+
+ <!-- Alpine.js логика -->
+ <script>
+    function createCard(item) {
+    const card = document.createElement('div');
+    card.className = `
+      w-64 bg-gradient-to-b from-blue-200 to-blue-300 border border-blue-400 
+      p-5 rounded-3xl shadow-lg transform transition hover:scale-105 hover:shadow-xl
+      flex flex-col items-center
+    `;
+
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'w-28 h-28 rounded-full overflow-hidden bg-white mb-4 flex items-center justify-center';
+
+    const img = document.createElement('img');
+    img.src = `/static/${item.image_path}`;
+    img.alt = item.name;
+    img.className = 'object-contain w-full h-full';
+
+    imgWrapper.appendChild(img);
+
+    const name = document.createElement('h3');
+    name.className = 'text-center text-blue-600 font-semibold text-lg drop-shadow-sm';
+    name.textContent = item.name;
+
+    const price = document.createElement('p');
+    price.className = 'text-center text-blue-600 font-bold mt-1 drop-shadow-sm';
+    price.textContent = `от ${item.price} ₽ ${item.description}`;
+
+    card.appendChild(imgWrapper);
+    card.appendChild(name);
+    card.appendChild(price);
+
+    return card;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('entities/')
+      .then(res => res.json())
+      .then(data => {
+        const servicesContainer = document.getElementById('services');
+        const productsContainer = document.getElementById('products');
+
+        data.forEach(item => {
+          const card = createCard(item);
+          if (item.type === 'SR') {
+            servicesContainer.appendChild(card);
+          } else if (item.type === 'PR') {
+            productsContainer.appendChild(card);
+          }
+        });
+      });
+  });
+</script>
+
+<script>
+  const stickyHeader = document.getElementById('stickyHeader');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 120) {
+      stickyHeader.classList.remove('opacity-0', 'pointer-events-none');
+      stickyHeader.classList.add('opacity-100');
+    } else {
+      stickyHeader.classList.remove('opacity-100');
+      stickyHeader.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+</script>
+
+</body>
+</html>
